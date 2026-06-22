@@ -32,6 +32,14 @@ const SKILLS_DATA = [
       { name: "Statistics", level: "Advanced", description: "A/B testing, regression analysis, hypothesis testing, and probability." },
       { name: "Git / Version Control", level: "Advanced", description: "Collaborative project management, branch workflows, and code deployment." }
     ]
+  },
+  {
+    category: "Frontend Development",
+    skills: [
+      { name: "HTML/CSS", level: "Advanced", description: "Building responsive websites with clean layouts, modern styling, and cross-browser compatibility." },
+      { name: "JavaScript", level: "Intermediate", description: "Developing interactive web applications and dynamic functionality." },
+      { name: "React", level: "Intermediate", description: "Creating component-based single-page applications." }
+    ]
   }
 ];
 
@@ -84,7 +92,7 @@ export default function Skills() {
         </div>
 
         {/* Skills Grid */}
-        <div className="skills-grid grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+        <div className="skills-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-6">
           {SKILLS_DATA.map((cat, idx) => (
             <div 
               key={idx}

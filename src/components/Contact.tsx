@@ -14,7 +14,7 @@ export default function Contact() {
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: containerRef.current,
+        trigger: containerRef.current!,
         start: "top 80%",
         toggleActions: "play none none none"
       }

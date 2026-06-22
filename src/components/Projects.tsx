@@ -11,68 +11,53 @@ gsap.registerPlugin(ScrollTrigger);
 const PROJECTS = [
   {
     id: 1,
-    title: "Retail Sales Intelligence Dashboard",
+    title: "Netflix Analytics Dashboard",
     category: "Business Intelligence & ETL",
-    description: "An interactive Power BI and Tableau dashboard analyzing multi-year retail transactions to reveal sales seasonality, identify regional revenue leaks, and project next-quarter performance.",
+    description: "Developed an interactive Netflix Analytics Dashboard using Power BI to analyze and visualize Netflix's content library. The dashboard provides valuable insights into content distribution, genre popularity, ratings, release trends, and global content availability.",
     tags: ["SQL", "Power BI", "Tableau", "Python"],
     link: "#"
   },
   {
     id: 2,
-    title: "Predictive Customer Churn Model",
-    category: "Machine Learning & Analytics",
-    description: "An end-to-end predictive analysis pipeline utilizing Python to clean raw behavioral datasets, perform feature engineering, and train XGBoost models to forecast high-risk customer churn.",
-    tags: ["Python", "Scikit-Learn", "Pandas", "Streamlit"],
-    link: "#"
+    title: "Sales Performance Dashboard",
+    category: "Data Analytics",
+    description: "An interactive dashboard designed to monitor sales KPIs, revenue growth, regional performance, and product profitability. Enables businesses to make informed decisions through real-time insights.",
+    tags: ["Power BI", "DAX", "Excel", "Business Intelligence"],
+    link: "https://github.com/Gokulnathdeveloper7/Sales-Performance-Dashboard"
   },
   {
     id: 3,
-    title: "Financial Sentiment ETL Pipeline",
-    category: "Data Engineering & Analytics",
-    description: "Automated ingestion pipeline scraping financial news portals daily, executing NLP sentiment analysis, and storing structured metrics in PostgreSQL for live charting.",
-    tags: ["Python", "PostgreSQL", "BeautifulSoup", "NLTK"],
-    link: "#"
+    title: "Customer Insights Dashboard",
+    category: "Data Analytics",
+    description: "A customer-focused dashboard that analyzes customer demographics, purchasing patterns, and engagement metrics to support data-driven marketing and retention strategies.",
+    tags: ["Power BI", "Customer Analytics", "Data Visualization"],
+    link: "https://github.com/Gokulnathdeveloper7/-Customer-insights"
+
   },
   {
     id: 4,
-    title: "Financial Sentiment ETL Pipeline",
-    category: "Data Engineering & Analytics",
-    description: "Automated ingestion pipeline scraping financial news portals daily, executing NLP sentiment analysis, and storing structured metrics in PostgreSQL for live charting.",
-    tags: ["Python", "PostgreSQL", "BeautifulSoup", "NLTK"],
-    link: "#"
+    title: "Amazon Sales Analytics Dashboard",
+    category: "Data Analytics",
+    description: "A comprehensive sales analytics dashboard that tracks revenue, orders, product performance, and customer purchasing behavior. Helps identify sales trends and business growth opportunities.",
+    tags: ["Power BI", "Excel", "Business Intelligence", "Analytics"],
+    link: "https://github.com/Gokulnathdeveloper7/amazon-dataset"
   },
   {
     id: 5,
-    title: "Financial Sentiment ETL Pipeline",
-    category: "Data Engineering & Analytics",
-    description: "Automated ingestion pipeline scraping financial news portals daily, executing NLP sentiment analysis, and storing structured metrics in PostgreSQL for live charting.",
-    tags: ["Python", "PostgreSQL", "BeautifulSoup", "NLTK"],
-    link: "#"
+    title: "IPL 2026 Analytics Dashboard",
+    category: "Sports Analytics",
+    description: "A dynamic IPL analytics dashboard that explores team performance, player statistics, match outcomes, and tournament insights. Provides a data-driven view of the IPL 2026 season.",
+    tags: ["Power BI", "Sports Analytics", "Data Visualization"],
+    link: "https://github.com/Gokulnathdeveloper7/Ipl-dataset"
   },
   {
     id: 6,
-    title: "Financial Sentiment ETL Pipeline",
-    category: "Data Engineering & Analytics",
-    description: "Automated ingestion pipeline scraping financial news portals daily, executing NLP sentiment analysis, and storing structured metrics in PostgreSQL for live charting.",
-    tags: ["Python", "PostgreSQL", "BeautifulSoup", "NLTK"],
-    link: "#"
+    title: "Phishing Message Detection System",
+    category: "Machine Learning & Cybersecurity",
+    description: "An intelligent phishing message detection system developed using Machine Learning to identify and classify fraudulent SMS and email messages. The project leverages Natural Language Processing (NLP) techniques for text preprocessing, feature extraction, and predictive modeling to protect users from phishing attacks. The solution provides real-time message analysis through an interactive Streamlit application.",
+    tags: ["Python", "Machine Learning", "NLP", "Scikit-Learn", "Streamlit", "Cybersecurity"],
+    link: "https://github.com/Gokulnathdeveloper7/PHISH-LENS-master"
   },
-  {
-    id: 7,
-    title: "Financial Sentiment ETL Pipeline",
-    category: "Data Engineering & Analytics",
-    description: "Automated ingestion pipeline scraping financial news portals daily, executing NLP sentiment analysis, and storing structured metrics in PostgreSQL for live charting.",
-    tags: ["Python", "PostgreSQL", "BeautifulSoup", "NLTK"],
-    link: "#"
-  },
-  {
-    id: 8,
-    title: "Financial Sentiment ETL Pipeline",
-    category: "Data Engineering & Analytics",
-    description: "Automated ingestion pipeline scraping financial news portals daily, executing NLP sentiment analysis, and storing structured metrics in PostgreSQL for live charting.",
-    tags: ["Python", "PostgreSQL", "BeautifulSoup", "NLTK"],
-    link: "#"
-  }
 ];
 
 export default function Projects() {
@@ -81,22 +66,22 @@ export default function Projects() {
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: containerRef.current,
+        trigger: containerRef.current!,
         start: "top 80%",
         toggleActions: "play none none none"
       }
     });
 
     // Title reveal animation
-    tl.fromTo(".projects-title", 
+    tl.fromTo(".projects-title",
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
     );
 
     // Card reveal animation with stagger
-    tl.fromTo(".project-card", 
+    tl.fromTo(".project-card",
       { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power4.out" }, 
+      { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power4.out" },
       "-=0.4"
     );
   }, { scope: containerRef });
