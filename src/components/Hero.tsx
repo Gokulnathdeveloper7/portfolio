@@ -122,13 +122,17 @@ export default function Hero() {
   const [displayedText, setDisplayedText] = useState("");
   const [isMuted, setIsMuted] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
   // Set isMounted to true on client-side to safely render WebGL Canvas
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -159,14 +163,14 @@ export default function Hero() {
     setIsMuted(newState);
     
     if (videoRef.current) {
-      videoRef.current.muted = newState;
-      if (!newState) {
+      videoRef.current.muted = isDesktop ? newState : true;
+      if (!newState && isDesktop) {
         videoRef.current.play().catch(err => console.log("Desktop audio play blocked:", err));
       }
     }
     if (mobileVideoRef.current) {
-      mobileVideoRef.current.muted = newState;
-      if (!newState) {
+      mobileVideoRef.current.muted = !isDesktop ? newState : true;
+      if (!newState && !isDesktop) {
         mobileVideoRef.current.play().catch(err => console.log("Mobile audio play blocked:", err));
       }
     }
@@ -180,7 +184,7 @@ export default function Hero() {
           ref={videoRef}
           autoPlay
           loop
-          muted={isMuted}
+          muted={isMuted || !isDesktop}
           playsInline
           className="hidden md:block absolute right-0 bottom-0 min-w-full min-h-full object-cover opacity-65 lg:opacity-85 mix-blend-normal pointer-events-auto"
           style={{ objectPosition: "85% center" }}
@@ -191,7 +195,7 @@ export default function Hero() {
           ref={mobileVideoRef}
           autoPlay
           loop
-          muted={isMuted}
+          muted={isMuted || isDesktop}
           playsInline
           className="block md:hidden absolute right-0 bottom-0 min-w-full min-h-full object-cover opacity-65 mix-blend-normal pointer-events-auto"
           style={{ objectPosition: "center" }}
