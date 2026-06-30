@@ -123,6 +123,7 @@ export default function Hero() {
   const [isMuted, setIsMuted] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
   // Set isMounted to true on client-side to safely render WebGL Canvas
   useEffect(() => {
@@ -154,12 +155,19 @@ export default function Hero() {
   }, [currentLine]);
 
   const toggleAudio = () => {
+    const newState = !isMuted;
+    setIsMuted(newState);
+    
     if (videoRef.current) {
-      const newState = !videoRef.current.muted;
       videoRef.current.muted = newState;
-      setIsMuted(newState);
       if (!newState) {
-        videoRef.current.play().catch(err => console.log("Audio play blocked:", err));
+        videoRef.current.play().catch(err => console.log("Desktop audio play blocked:", err));
+      }
+    }
+    if (mobileVideoRef.current) {
+      mobileVideoRef.current.muted = newState;
+      if (!newState) {
+        mobileVideoRef.current.play().catch(err => console.log("Mobile audio play blocked:", err));
       }
     }
   };
@@ -174,10 +182,21 @@ export default function Hero() {
           loop
           muted={isMuted}
           playsInline
-          className="absolute right-0 bottom-0 min-w-full min-h-full object-cover opacity-65 lg:opacity-85 mix-blend-normal pointer-events-auto"
+          className="hidden md:block absolute right-0 bottom-0 min-w-full min-h-full object-cover opacity-65 lg:opacity-85 mix-blend-normal pointer-events-auto"
           style={{ objectPosition: "85% center" }}
         >
           <source src="/Man_speaking_in_studio_202606152134.mp4" type="video/mp4" />
+        </video>
+        <video
+          ref={mobileVideoRef}
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+          className="block md:hidden absolute right-0 bottom-0 min-w-full min-h-full object-cover opacity-65 mix-blend-normal pointer-events-auto"
+          style={{ objectPosition: "center" }}
+        >
+          <source src="/Man_speaking_in_studio_202606301852.mp4" type="video/mp4" />
         </video>
 
         {isMounted && (
@@ -209,9 +228,13 @@ export default function Hero() {
           <p className="max-w-lg text-base md:text-lg text-boneWhite/60 font-body font-normal leading-relaxed">
             Translating complex, raw datasets into interactive business intelligence dashboards, statistical insights, and automated data pipelines to drive strategic growth.
           </p>
-          <div className="flex items-center space-x-4 pt-4">
+          <div className="flex items-center flex-wrap gap-4 pt-4">
             <a href="#projects" className="px-6 py-3 bg-ember text-carbon font-body font-medium hover:bg-amberHighlight transition-all duration-300">View Projects</a>
             <a href="#contact" className="px-6 py-3 border border-boneWhite/20 text-boneWhite font-body font-medium hover:bg-boneWhite hover:text-carbon transition-all duration-300">Contact Me</a>
+            <a href="/GOKULNATH_J_Resume.pdf" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-boneWhite/20 text-boneWhite font-body font-medium hover:bg-boneWhite hover:text-carbon transition-all duration-300 flex items-center space-x-2">
+              <span>Resume</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            </a>
           </div>
         </div>
 

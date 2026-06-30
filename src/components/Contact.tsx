@@ -43,7 +43,7 @@ export default function Contact() {
     <section 
       id="contact" 
       ref={containerRef}
-      className="relative w-full min-h-screen bg-carbon flex flex-col justify-center overflow-hidden px-6 lg:px-16 py-24 z-10 border-t border-boneWhite/5"
+      className="relative w-full min-h-screen bg-black flex flex-col justify-center overflow-hidden px-6 lg:px-16 py-24 z-10 border-t border-boneWhite/5"
     >
       {/* Visual background elements */}
       <div className="absolute right-[-10%] top-[20%] w-[35rem] h-[35rem] bg-ember/5 rounded-full blur-[120px] pointer-events-none" />
@@ -72,7 +72,7 @@ export default function Contact() {
             <div>
               <span className="text-ember block text-[9px] uppercase tracking-wider mb-1">Digital Coordinates</span>
               <div className="flex space-x-4">
-                <a href="#" className="hover:text-amberHighlight transition-colors duration-200">GitHub</a>
+                <a href="https://github.com/Gokulnathdeveloper7" target="_blank" rel="noopener noreferrer" className="hover:text-amberHighlight transition-colors duration-200">GitHub</a>
                 <a href="#" className="hover:text-amberHighlight transition-colors duration-200">LinkedIn</a>
                 <a href="#" className="hover:text-amberHighlight transition-colors duration-200">Tableau Public</a>
               </div>

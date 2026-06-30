@@ -92,7 +92,7 @@ export default function Certifications() {
     <section
       id="certifications"
       ref={containerRef}
-      className="relative w-full min-h-screen bg-graphite flex flex-col justify-center overflow-hidden px-6 lg:px-16 py-24 z-10 border-t border-boneWhite/5"
+      className="relative w-full min-h-screen bg-black flex flex-col justify-center overflow-hidden px-6 lg:px-16 py-24 z-10 border-t border-boneWhite/5"
     >
       <div className="max-w-6xl mx-auto w-full flex flex-col space-y-12">
 

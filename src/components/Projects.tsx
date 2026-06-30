@@ -15,7 +15,7 @@ const PROJECTS = [
     category: "Business Intelligence & ETL",
     description: "Developed an interactive Netflix Analytics Dashboard using Power BI to analyze and visualize Netflix's content library. The dashboard provides valuable insights into content distribution, genre popularity, ratings, release trends, and global content availability.",
     tags: ["SQL", "Power BI", "Tableau", "Python"],
-    link: "#"
+    link: "https://github.com/Gokulnathdeveloper7/Netflix-Analytics-Dashboard"
   },
   {
     id: 2,
@@ -90,7 +90,7 @@ export default function Projects() {
     <section
       id="projects"
       ref={containerRef}
-      className="relative w-full min-h-screen bg-graphite flex flex-col justify-center overflow-hidden px-6 lg:px-16 py-24 z-10 border-t border-boneWhite/5"
+      className="relative w-full min-h-screen bg-black flex flex-col justify-center overflow-hidden px-6 lg:px-16 py-24 z-10 border-t border-boneWhite/5"
     >
       <div className="max-w-6xl mx-auto w-full flex flex-col space-y-12">
 
